@@ -8,7 +8,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="p-8 bg-gray-700 rounded-lg shadow-lg">
+    <div className="p-8 bg-custom-gradient-3 rounded-lg shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Happy Publisher */}
         <div

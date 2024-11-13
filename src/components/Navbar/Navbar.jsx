@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Navbar() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For dropdown menu
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -14,9 +14,9 @@ function Navbar() {
       {/* Navbar */}
       <nav
         data-aos="fade-down"
-        className="bg-custom-gradient bg-opacity-50 text-white shadow-md"
+        className="bg-gradient-to-r from-[#0c0494] via-[#080a0f] to-[#0c0494] text-white shadow-md backdrop-blur-md"
       >
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo and Site Name */}
           <a href="/" className="flex items-center space-x-2">
             <img
@@ -24,62 +24,68 @@ function Navbar() {
               alt="Logo"
               className="h-12 w-12 rounded-full"
             />
-            <span className="font-bold">Adburst.UK</span>
+            <span className="font-bold text-2xl tracking-wider">
+              Adburst.UK
+            </span>
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex space-x-10 font-bold">
+          <div className="hidden md:flex space-x-10 font-semibold">
             {["Home", "Services"].map((link) => (
               <a
                 key={link}
                 href="#"
-                className="hover:text-[#5f63ac] transition transform hover:scale-105"
+                className="hover:text-[#5f63ac] transition duration-300 transform hover:scale-105"
               >
                 {link}
               </a>
             ))}
 
-            {/* Get Started Button */}
-            <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="hover:text-[#5f63ac] transition transform hover:scale-105"
-            >
-              Get Started
-            </button>
+            {/* Get Started Button with Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="hover:text-[#5f63ac] transition duration-300 transform hover:scale-105"
+              >
+                Get Started
+              </button>
+
+              {/* Small Dropdown Menu */}
+              {isDropdownOpen && (
+                <ul
+                  className="absolute right-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg p-2 space-y-1 transition-all duration-300 ease-in-out"
+                  data-aos="fade-down"
+                >
+                  <li>
+                    <a
+                      href="https://dashboard.adburst.uk/auth?ReturnUrl=%2F"
+                      className="block py-2 px-4 hover:bg-gray-100 rounded-md transition duration-200"
+                    >
+                      Login
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://dashboard.adburst.uk/Auth/Register"
+                      className="block py-2 px-4 hover:bg-gray-100 rounded-md transition duration-200"
+                    >
+                      Sign Up
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Dropdown Section (appears below the Navbar) */}
+      {/* Optional Overlay for Mobile View */}
       {isDropdownOpen && (
-        <section className="bg-gray-100 p-8">
-          <div
-            className="container mx-auto text-center"
-            data-aos="fade-up" // Adding fade-up animation to dropdown
-          >
-            <ul className="bg-white text-black rounded shadow-lg p-4 transition-all ease-in-out duration-300">
-              <li>
-                <a
-                  href="https://dashboard.adburst.uk/auth?ReturnUrl=%2F"
-                  className="block py-2 px-4 hover:bg-gray-100 transition"
-                >
-                  Login
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://dashboard.adburst.uk/Auth/Register"
-                  className="block py-2 px-4 hover:bg-gray-100 transition"
-                >
-                  Sign Up
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <div
+          className="fixed inset-0 bg-black opacity-25 z-10"
+          onClick={() => setIsDropdownOpen(false)}
+        ></div>
       )}
-
-      {/* Other Sections */}
     </div>
   );
 }

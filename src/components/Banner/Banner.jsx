@@ -38,9 +38,7 @@ const Banner = () => {
   };
 
   return (
-    <section className="relative">
-      {/* Main Heading */}
-
+    <section className="relative z-10">
       <Slider {...settings} className="absolute top-0 left-0 w-full h-full">
         {/* Slide 1 */}
         <div className="relative">
@@ -50,11 +48,14 @@ const Banner = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-40">
-            <h1 className="text-3xl md:text-5xl font-bold">Maximize Your Revenue</h1>
-            <h3 className="text-xl md:text-2xl mt-2">By Collaboration With Adburst</h3>
+            <h1 className="text-3xl md:text-5xl font-bold">
+              Maximize Your Revenue
+            </h1>
+            <h3 className="text-xl md:text-2xl mt-2">
+              By Collaboration With Adburst
+            </h3>
           </div>
         </div>
-
 
         <div className="relative">
           <img
@@ -63,8 +64,12 @@ const Banner = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-40">
-            <h1 className="text-3xl md:text-5xl font-bold">Adburst connects publishers and advertisers</h1>
-            <h3 className="text-xl md:text-2xl mt-2">and provides best solutions for them</h3>
+            <h1 className="text-3xl md:text-5xl font-bold">
+              Adburst connects publishers and advertisers
+            </h1>
+            <h3 className="text-xl md:text-2xl mt-2">
+              and provides best solutions for them
+            </h3>
           </div>
         </div>
       </Slider>
